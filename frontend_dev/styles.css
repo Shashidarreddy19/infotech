@@ -442,8 +442,6 @@ a {
     z-index: 1001;
 }
 
-
-
 /* ==========================================
    RESPONSIVE DESIGN - LARGE DESKTOP (1280px+)
    ========================================== */
@@ -461,17 +459,105 @@ a {
 }
 
 /* ==========================================
-    RESPONSIVE DESIGN - TABLET PORTRAIT (≤768px)
-    ========================================== */
- @media (max-width: 768px) {
-
-    /* ==========================================
-        NAVIGATION (Consistent with Mobile)
-       ========================================== */
-    .header {
-        height: 80px;
+   RESPONSIVE DESIGN - TABLET (≤1024px)
+   ========================================== */
+@media (max-width: 1024px) {
+    /* NAVIGATION */
+    .nav-container {
+        padding: 0 40px;
+        height: 90px;
+    }
+    
+    .logo {
+        width: 165px;
+        height: 35px;
     }
 
+    .nav-links {
+        font-size: 18px;
+        padding: 10px 14px; 
+        gap: 10px;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+        padding: 10px 14px;   /* smaller padding for better alignment */
+        line-height: 1.2;     /* makes vertical size consistent */
+    }
+    .nav-cta {
+        gap: 16px;
+    }
+
+    .nav-cta .btn {
+        padding: 8px 9px;
+        font-size: 15px;
+  }
+    /* MAIN CONTENT */
+    .main-content {
+        margin-top: 90px;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+        min-height: auto;
+        padding: 150px 80px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        line-height: 1.2;
+    }
+    .hero-underline {
+        position: absolute;
+        width: 250px;
+        top: 50px;
+        left: 295px;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        font-size: 20px;
+        line-height: 1.8;
+    }
+
+    .hero-image-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 450px;
+        height: 520px;
+        margin-top: 100px;
+    }
+
+    /* FEATURES */
+    .features-section {
+        padding: 60px 40px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .feature-card {
+        min-height: 400px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN - TABLET PORTRAIT (≤768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* NAVIGATION */
     .nav-container {
         padding: 0 24px;
         height: 80px;
@@ -480,74 +566,55 @@ a {
     .logo {
         width: 150px;
         height: 38px;
-        z-index: 2001; /* Keep logo on top */
     }
 
-    /* 1. HIDE DESKTOP NAV & SHOW HAMBURGER */
-    .nav-container .nav-links {
-        display: none; /* Hide desktop links */
-    }
-    .nav-container .nav-cta {
-        display: none; /* Hide desktop button */
-    }
+    /* Show hamburger */
     .hamburger {
-        display: block; /* Show hamburger */
-        z-index: 2001;
+        display: block;
     }
 
-    /* 2. STYLE THE SLIDE-OUT MENU */
-    /* This uses the same logic as your mobile design */
+    /* Hide desktop nav initially */
     .nav-links {
-        display: flex;
+        display: none;
         flex-direction: column;
         position: fixed;
-        top: 0;
+        top: 80px;
         left: 0;
-        width: 85%;
-        max-width: 320px; /* Set max width for tablet */
-        height: 100vh;
-        background: var(--bg-pink); /* Matches your design */
-        z-index: 2000;
-        
-        padding: 100px 30px 30px 30px;
-        align-items: flex-start;
-        gap: 32px;
-
-        /* Hide off-screen */
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        width: 100%;
+        background: var(--bg-white);
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        gap: 8px;
     }
 
-    /* JS-toggled class to show menu */
-    body.nav-open .nav-links {
-        transform: translateX(0);
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    /* When menu is active */
+    .nav-links.active {
+        display: flex;
     }
     
     .nav-link {
         width: 100%;
-        padding: 0; /* Remove old padding */
+        padding: 12px 16px;
         font-size: 18px;
-        font-weight: 500;
-        color: var(--text-black);
-        border-bottom: none; /* Remove old border */
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    /* ==========================================
-        MAIN CONTENT
-       ========================================== */
+    /* Hide CTA on mobile */
+    .nav-cta {
+        display: none;
+    }
+
+    /* MAIN CONTENT */
     .main-content {
-        margin-top: 80px; /* Match header height */
+        margin-top: 80px;
     }
 
-    /* ==========================================
-        HERO SECTION
-       ========================================== */
+    /* HERO SECTION */
     .hero-section {
         padding: 85px 40px;
         text-align: center;
         align-items: center;
-        overflow: clip; /* Fixes overflow bug */
     }
 
     .hero-content {
@@ -561,7 +628,7 @@ a {
     }
     .hero-underline {
         display: none;
-    }
+  }
 
     .hero-description {
         font-size: 15px;
@@ -581,28 +648,21 @@ a {
         font-size: 16px;
     }
 
-    /* 3. HERO IMAGE FIX */
     .hero-image-container {
-        position: relative; /* Must be relative */
-        top: 150px;          /* Reset desktop 'top' */
-        left: 5px;         /* Reset desktop 'left' */
-        
         width: 100%;
-        max-width: 400px;
-        height: 500px;
-        margin-top: 10px; /* Controls spacing */
+        max-width: 350px;
+        height: 420px;
+        margin-top: 50px;
+        position: relative;
+        top: 50px;
     }
-
-    /* ==========================================
-        FEATURES SECTION
-       ========================================== */
+    /* FEATURES */
     .features-section {
-        padding: 50px 24px;
+        padding: 50px 50px;
     }
 
     .features-container {
         gap: 40px;
-        height: auto;
     }
 
     .features-title {
@@ -615,44 +675,29 @@ a {
         padding: 8px 16px;
     }
 
-    /* 4. GRID CHANGED TO 2 COLUMNS */
     .features-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-template-columns: 1fr;
         gap: 20px;
-        width: 100%;
-        height: auto;
     }
 
-    /* 5. CARD STYLE CONSISTENT WITH MOBILE */
     .feature-card {
-        height: 450px; /* Fixed height for consistency */
-        width: 100%;
-        margin: 0 auto;
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Spaces content */
-    
+        min-height: auto;
+        padding: 50px;
     }
     
     .feature-image {
-        height: 180px; /* Tablet image height */
-        width: 100%;
-        object-fit: cover;
+        height: 180px;
     }
 
     .feature-title {
         font-size: 19px;
         line-height: 1.4;
-        margin: 0;
-        padding: 16px 16px 10px 16px; /* Add padding here */
+        margin: 16px 0 12px;
     }
 
     .feature-description {
         font-size: 16px;
         line-height: 1.6;
-        margin: 0;
-        padding: 0 16px 16px 16px; /* Add padding here */
     }
 }
 
@@ -875,7 +920,7 @@ a {
 
 /* --- Card Description --- */
 .feature-description {
-    text-align: c;
+    text-align: center;
     font-size: 15px;
     line-height: 1.2;
     margin: 0;
